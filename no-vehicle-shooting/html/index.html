@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changement de siège</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="seatSelector" class="seat-selector hidden">
+        <div class="selector-container">
+            <div class="selector-header">
+                <h2>Changer de place</h2>
+                <span class="close-hint">H ou ESC pour fermer</span>
+            </div>
+            
+            <div class="seats-grid">
+                <!-- Rangée avant -->
+                <div class="seat-row front-row">
+                    <div class="seat" data-seat="-1" id="seat-driver">
+                        <div class="seat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+                            </svg>
+                        </div>
+                        <span class="seat-label">Conducteur</span>
+                        <span class="seat-status"></span>
+                    </div>
+                    
+                    <div class="seat" data-seat="0" id="seat-passenger">
+                        <div class="seat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+                            </svg>
+                        </div>
+                        <span class="seat-label">Passager</span>
+                        <span class="seat-status"></span>
+                    </div>
+                </div>
+                
+                <!-- Rangée arrière -->
+                <div class="seat-row back-row">
+                    <div class="seat" data-seat="1" id="seat-left">
+                        <div class="seat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+                            </svg>
+                        </div>
+                        <span class="seat-label">Arrière G</span>
+                        <span class="seat-status"></span>
+                    </div>
+                    
+                    <div class="seat-middle" data-seat="3" id="seat-middle">
+                        <div class="seat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+                            </svg>
+                        </div>
+                        <span class="seat-label">Milieu</span>
+                        <span class="seat-status"></span>
+                    </div>
+                    
+                    <div class="seat" data-seat="2" id="seat-right">
+                        <div class="seat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+                            </svg>
+                        </div>
+                        <span class="seat-label">Arrière D</span>
+                        <span class="seat-status"></span>
+                    </div>
+                </div>
+                
+                <!-- Rangée supplémentaire (bus/gros véhicules) -->
+                <div class="seat-row extra-row" id="extra-seats">
+                    <div class="seat" data-seat="4" id="seat-extra1">
+                        <div class="seat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+                            </svg>
+                        </div>
+                        <span class="seat-label">Siège 5</span>
+                        <span class="seat-status"></span>
+                    </div>
+                    
+                    <div class="seat" data-seat="5" id="seat-extra2">
+                        <div class="seat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+                            </svg>
+                        </div>
+                        <span class="seat-label">Siège 6</span>
+                        <span class="seat-status"></span>
+                    </div>
+                    
+                    <div class="seat" data-seat="6" id="seat-extra3">
+                        <div class="seat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+                            </svg>
+                        </div>
+                        <span class="seat-label">Siège 7</span>
+                        <span class="seat-status"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-message" id="infoMessage"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

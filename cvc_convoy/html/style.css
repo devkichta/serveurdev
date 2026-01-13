@@ -1,0 +1,430 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   CONVOI CONTRE CONVOI - STYLES NUI
+   Design: Blanc/Rouge/Noir - Sans box-shadow
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+    /* Couleurs principales - Blanc/Rouge/Noir */
+    --primary-red: #ff0000;
+    --primary-white: #ffffff;
+    --primary-black: #0a0a0a;
+    
+    /* Accents */
+    --accent-red-light: #ff3333;
+    --accent-red-dark: #cc0000;
+    --accent-gray: #2a2a2a;
+    --accent-gray-light: #3a3a3a;
+    
+    /* Backgrounds */
+    --dark-bg: #0a0a0a;
+    --dark-card: #151515;
+    --darker-card: #0d0d0d;
+    
+    /* Texte */
+    --text-primary: #ffffff;
+    --text-secondary: #999999;
+    --text-muted: #666666;
+    
+    /* Bordures */
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-red: rgba(255, 0, 0, 0.3);
+    
+    /* États */
+    --success-green: #00ff00;
+    --warning-orange: #ff9900;
+    
+    /* Spacing */
+    --spacing-xs: 8px;
+    --spacing-sm: 12px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    
+    /* Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+    background: transparent;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    color: var(--text-primary);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CONTAINER PRINCIPAL
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+#announcement-container {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+/* Positions */
+#announcement-container.position-top {
+    top: 50px;
+}
+
+#announcement-container.position-center {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#announcement-container.position-bottom {
+    bottom: 100px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BOX D'ANNONCE
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.announcement-box {
+    background: linear-gradient(135deg, var(--darker-card) 0%, var(--dark-card) 100%);
+    border: 2px solid var(--primary-red);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    min-width: 400px;
+    max-width: 700px;
+    animation: slideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+}
+
+/* Ligne décorative supérieure */
+.announcement-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--primary-red) 50%, 
+        transparent 100%
+    );
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HEADER
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.announcement-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-red);
+}
+
+.announcement-icon {
+    font-size: 24px;
+    animation: pulse 2s ease-in-out infinite;
+    filter: brightness(1.2);
+}
+
+.announcement-title {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--primary-red);
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CONTENU
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.announcement-content {
+    text-align: center;
+    padding: var(--spacing-sm) 0;
+}
+
+#announcement-text {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.announcement-footer {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-sm);
+}
+
+.announcement-line {
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--primary-red) 20%, 
+        var(--primary-red) 80%, 
+        transparent 100%
+    );
+    border-radius: var(--radius-sm);
+    animation: lineGlow 2s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-40px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-40px) scale(0.95);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: 0.8;
+    }
+}
+
+@keyframes lineGlow {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ÉTATS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.hidden {
+    display: none !important;
+}
+
+.fade-out {
+    animation: slideOut 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   THÈMES ÉQUIPES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Équipe Rouge */
+.announcement-box.team-red {
+    border-color: var(--primary-red);
+    background: linear-gradient(135deg, 
+        rgba(255, 0, 0, 0.05) 0%, 
+        var(--darker-card) 50%,
+        rgba(255, 0, 0, 0.05) 100%
+    );
+}
+
+.announcement-box.team-red .announcement-title {
+    color: var(--accent-red-light);
+    text-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
+}
+
+.announcement-box.team-red .announcement-line {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--accent-red-light) 20%, 
+        var(--accent-red-light) 80%, 
+        transparent 100%
+    );
+}
+
+.announcement-box.team-red::before {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--accent-red-light) 50%, 
+        transparent 100%
+    );
+}
+
+/* Équipe Bleue */
+.announcement-box.team-blue {
+    border-color: #3296ff;
+    background: linear-gradient(135deg, 
+        rgba(50, 150, 255, 0.05) 0%, 
+        var(--darker-card) 50%,
+        rgba(50, 150, 255, 0.05) 100%
+    );
+}
+
+.announcement-box.team-blue .announcement-title {
+    color: #3296ff;
+    text-shadow: 0 0 10px rgba(50, 150, 255, 0.5);
+}
+
+.announcement-box.team-blue .announcement-line {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #3296ff 20%, 
+        #3296ff 80%, 
+        transparent 100%
+    );
+}
+
+.announcement-box.team-blue::before {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #3296ff 50%, 
+        transparent 100%
+    );
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media screen and (max-width: 800px) {
+    .announcement-box {
+        min-width: 300px;
+        max-width: 90%;
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+    
+    .announcement-title {
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+    
+    #announcement-text {
+        font-size: 16px;
+    }
+    
+    .announcement-icon {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .announcement-box {
+        min-width: 280px;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .announcement-title {
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+    
+    #announcement-text {
+        font-size: 14px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   VARIATIONS VISUELLES (Optionnel)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Mode urgent (animation plus rapide) */
+.announcement-box.urgent {
+    animation-duration: 0.3s;
+    border-width: 3px;
+}
+
+.announcement-box.urgent .announcement-icon {
+    animation-duration: 1s;
+}
+
+.announcement-box.urgent .announcement-line {
+    animation-duration: 1s;
+}
+
+/* Mode succès */
+.announcement-box.success {
+    border-color: var(--success-green);
+}
+
+.announcement-box.success .announcement-title {
+    color: var(--success-green);
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.announcement-box.success .announcement-line {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--success-green) 20%, 
+        var(--success-green) 80%, 
+        transparent 100%
+    );
+}
+
+.announcement-box.success::before {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--success-green) 50%, 
+        transparent 100%
+    );
+}
+
+/* Mode avertissement */
+.announcement-box.warning {
+    border-color: var(--warning-orange);
+}
+
+.announcement-box.warning .announcement-title {
+    color: var(--warning-orange);
+    text-shadow: 0 0 10px rgba(255, 153, 0, 0.5);
+}
+
+.announcement-box.warning .announcement-line {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--warning-orange) 20%, 
+        var(--warning-orange) 80%, 
+        transparent 100%
+    );
+}
+
+.announcement-box.warning::before {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--warning-orange) 50%, 
+        transparent 100%
+    );
+}
